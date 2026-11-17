@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { isIndexable } from "./lib/indexing";
 const config: NextConfig = {
   poweredByHeader: false,
   async headers() {
@@ -13,7 +14,7 @@ const config: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
-          ...(process.env.INDEXABLE !== "true"
+          ...(!isIndexable
             ? [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]
             : []),
         ],

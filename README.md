@@ -21,7 +21,7 @@ python scripts/check-output.py
 npm audit --omit=dev
 ```
 
-The output check expects a default, non-indexable build. It parses rendered HTML and checks all eight content routes, metadata, image references, local navigation and preview robots.
+The output checker supports both modes. For a public build, use `INDEXABLE=true VERCEL_ENV=production SITE_URL=https://www.espressov.com npm run build` followed by `python scripts/check-output.py --indexable`. For the sample, keep a default or Vercel preview build and run `python scripts/check-output.py`. Run `node scripts/check-theme.mjs` to check theme initialization and core contrast pairs. See docs/NERTIA_REVIEW.md for evidence and activation instructions.
 
 ## Pages
 
@@ -65,3 +65,11 @@ The existing production site remains unchanged. Retain a backup and the current 
 ## Project records
 
 Read PROJECT_STATE.md, CHANGELOG.md, AUDIT_REPORT.md and docs/BRAND_FACTS.md. The complete internal agency guide remains in the originating workspace; its project-scoped requirements are recorded in AGENTS.md and the audit records. No global machine settings were changed.
+
+## Light and dark mode
+
+The navigation toggle follows the visitor's system preference until they choose light or dark. The choice is stored locally under `espressov-theme`; no preference is sent to a backend. A small static head script applies it before paint, with graceful fallback if browser storage is blocked. A future strict CSP must allow this specific bootstrap using an appropriate hash/nonce. The Luma frame is an external surface with its own presentation. No animation dependency or tracker is added.
+
+## Sample SEO scores
+
+The user confirmed espressov-com.vercel.app is a sample. It intentionally stays non-indexable. Public SEO settings have been verified in a separate production-mode build, not activated on the sample. `INDEXABLE=true` cannot enable indexing on a Vercel preview deployment, and public builds require an explicit valid SITE_URL. This prevents accidental duplicate indexing. See docs/NERTIA_REVIEW.md.

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-17 — Dark mode and Nertia readiness
+- Added persistent light/dark toggle with system default and pre-paint initialization.
+- Centralized indexing policy; Vercel previews stay blocked, public builds require an approved SITE_URL.
+- Added production/preview SEO output checks and canonical-aware llms.txt generation.
+- Added responsive Next.js image optimization and separated server site config from the client calendar.
+- Fixed JSON-LD text escaping; documented supplied Nertia results and limits.
+- Sample remains non-indexable, as requested.
+
 ## 2026-11-17 — GitHub review submission
 - Prepared source and audit records for univme/espressov.com on a review branch.
 - Retained internal agency master guide privately; scoped project requirements remain in AGENTS.md.

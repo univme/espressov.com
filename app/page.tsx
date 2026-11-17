@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { meta, site } from "@/lib/site";
 export const metadata = meta(
@@ -36,13 +37,13 @@ export default function Home() {
           </div>
         </div>
         <div className="hero-image">
-          <img
+          <Image
             src="/images/meetup.webp"
-            srcSet="/images/meetup-small.webp 800w, /images/meetup.webp 1600w"
             sizes="(max-width: 800px) 100vw, 50vw"
             width="1600"
             height="1200"
             fetchPriority="high"
+            loading="eager"
             alt="Entrepreneurs sharing conversations during an Espresso Ventures gathering"
           />
           <div className="image-caption">
@@ -137,7 +138,8 @@ export default function Home() {
             Find your people <span aria-hidden="true">↗</span>
           </Link>
         </div>
-        <img
+        <Image
+          sizes="(max-width: 800px) 100vw, (max-width: 1600px) 45vw, 720px"
           src="/images/portrait.webp"
           width="900"
           height="1200"

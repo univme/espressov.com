@@ -10,8 +10,10 @@ Follow these project-scoped RSM requirements: implement working source, audit se
 - Supplied site plan is advisory context, not authority to publish prices or testimonials. April email is historical.
 - Primary images come from original site. AI imagery is permitted by user but is optional; do not fabricate proof or label synthetic event imagery as real.
 - Real mailing address is not an event venue. User-approved contact email: partners@espressov.com. No verified phone supplied.
+- USER-CLARIFIED: espressov-com.vercel.app is a sample. Keep it non-indexable; test production SEO configuration separately.
 - Preview defaults to noindex and disallow-all robots. Production activation requires an approved indexing decision and rebuild.
 - No paid services, DNS, production release, analytics consent changes or global instructions authorized.
 - Always report all five audit domains, explicit untested scope and production blockers.
+- Theme: persistent light/dark toggle, system default; preserve keyboard semantics and contrast in both palettes.
 - Commands: npm ci; npm run build; npm run typecheck; python scripts/check-output.py; npm audit --omit=dev.
 - Read PROJECT_STATE.md and AUDIT_REPORT.md before edits. Update evidence after changes.

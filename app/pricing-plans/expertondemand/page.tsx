@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { meta } from "@/lib/site";
 export const metadata = meta(
@@ -20,7 +21,8 @@ export default function Page() {
         </Link>
       </section>
       <section className="section split detail-section">
-        <img
+        <Image
+          sizes="(max-width: 800px) 100vw, (max-width: 1600px) 45vw, 720px"
           src="/images/meetup.webp"
           width="1600"
           height="1200"

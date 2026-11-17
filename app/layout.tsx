@@ -1,6 +1,9 @@
+import { isIndexable } from "@/lib/indexing";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site, JsonLd } from "@/lib/site";
+import ThemeToggle from "@/components/ThemeToggle";
+import { themeBootstrap } from "@/lib/theme";
 import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -8,10 +11,9 @@ export const metadata: Metadata = {
     default: "Espresso Ventures | Entrepreneurs, Growth & Naples Tech",
     template: "%s | Espresso Ventures",
   },
-  robots:
-    process.env.INDEXABLE === "true"
-      ? { index: true, follow: true }
-      : { index: false, follow: false },
+  robots: isIndexable
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
   icons: { icon: "/icon.svg" },
 };
 export default function RootLayout({
@@ -20,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
       <body>
         <a className="skip" href="#main">
           Skip to content
@@ -43,6 +48,7 @@ export default function RootLayout({
             <Link className="nav-cta" href="/contact">
               Let’s connect <span aria-hidden="true">↗</span>
             </Link>
+            <ThemeToggle />
           </nav>
         </header>
         {children}

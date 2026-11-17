@@ -6,6 +6,15 @@
   --teal-dark: #07565b;
   --muted: #536360;
   --line: #d1d7ce;
+  --ribbon: #e3e8df;
+  --footer: #e4e8e0;
+  --calendar: #e9ede5;
+  --panel-border: #c4d1c8;
+  --focus: #ac5018;
+  --button-bg: #08757c;
+  --button-fg: #ffffff;
+  --feature-bg: #07565b;
+  color-scheme: light;
   --serif: Georgia, "Times New Roman", serif;
   --sans: Arial, Helvetica, sans-serif;
 }
@@ -40,7 +49,7 @@ summary {
 a:focus-visible,
 button:focus-visible,
 summary:focus-visible {
-  outline: 3px solid #ac5018;
+  outline: 3px solid var(--focus);
   outline-offset: 5px;
 }
 img {
@@ -139,7 +148,9 @@ p {
 nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   font-size: 0.8rem;
 }
 nav a {
@@ -233,8 +244,8 @@ nav a:hover {
   align-items: center;
   justify-content: center;
   gap: 25px;
-  background: var(--teal);
-  color: #fff;
+  background: var(--button-bg);
+  color: var(--button-fg);
   border: 1px solid var(--teal);
   padding: 15px 24px;
   text-decoration: none;
@@ -270,7 +281,7 @@ nav a:hover {
   gap: 25px;
   align-items: center;
   padding: 24px 5%;
-  background: #e3e8df;
+  background: var(--ribbon);
   border-block: 1px solid var(--line);
   color: var(--teal-dark);
   font-size: 0.67rem;
@@ -335,8 +346,8 @@ nav a:hover {
   grid-template-columns: 1.2fr 1fr;
   max-width: 1600px;
   margin: 0 auto;
-  background: var(--teal-dark);
-  color: var(--paper);
+  background: var(--feature-bg);
+  color: #f4f1e9;
   min-height: 650px;
 }
 .community-feature > div {
@@ -387,7 +398,7 @@ nav a:hover {
   grid-template-columns: 1.1fr 1fr 0.8fr 1.2fr;
   gap: 40px;
   padding: 64px 6%;
-  background: #e4e8e0;
+  background: var(--footer);
   border-top: 1px solid var(--line);
 }
 footer h2 {
@@ -449,7 +460,7 @@ footer .footer-wordmark {
   font-size: clamp(3.2rem, 4.8vw, 5.8rem);
 }
 .calendar-section {
-  background: #e9ede5;
+  background: var(--calendar);
   max-width: none;
 }
 .section-title {
@@ -462,7 +473,7 @@ footer .footer-wordmark {
 }
 .calendar-shell {
   background: var(--white);
-  border: 1px solid #c4d1c8;
+  border: 1px solid var(--panel-border);
   max-width: 1300px;
   margin: auto;
   box-shadow: 0 12px 40px #213e2d06;
@@ -603,6 +614,71 @@ details p {
 }
 .detail-section .text-link {
   margin-top: 15px;
+}
+/* Theme is set before paint and follows the system until a visitor chooses. */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #101c1e;
+  --white: #192a2d;
+  --ink: #f4f1e9;
+  --muted: #b7c8c5;
+  --teal: #74d9d1;
+  --teal-dark: #9de6df;
+  --line: #40585b;
+  --ribbon: #1c3032;
+  --footer: #162629;
+  --calendar: #142326;
+  --panel-border: #40585b;
+  --focus: #f0c27b;
+  --button-bg: #74d9d1;
+  --button-fg: #10282a;
+  --feature-bg: #123c40;
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 9px 13px;
+  background: transparent;
+  border: 1px solid var(--muted);
+  border-radius: 24px;
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
+.theme-toggle:hover {
+  border-color: var(--teal);
+}
+.theme-toggle[aria-pressed="true"] {
+  background: var(--ribbon);
+  border-color: var(--teal);
+}
+html[data-theme="dark"] .brand img {
+  filter: brightness(0) invert(1);
+}
+html[data-theme="dark"] .button:hover {
+  background: #9de6df;
+  color: #10282a;
+}
+html[data-theme="dark"] .cream {
+  background: #e3ebe6;
+  color: #123c40;
+  border-color: #e3ebe6;
+}
+html[data-theme="dark"] .cream:hover {
+  background: #ffffff;
+  color: #123c40;
+}
+html[data-theme="dark"] .community-feature {
+  border-block: 1px solid var(--line);
+}
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    color-scheme: dark;
+  }
 }
 @media (min-width: 1600px) {
   .hero {
