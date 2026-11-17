@@ -1,13 +1,12 @@
 "use client";
 import { useState } from "react";
-import { site } from "@/lib/site";
-export default function Calendar() {
+export default function Calendar({ calendarUrl }: { calendarUrl: string }) {
   const [shown, setShown] = useState(false);
   return (
     <div className="calendar-shell">
       <div className="calendar-bar">
         <span className="eyebrow">NAPLES TECH & ESPRESSO · LUMA</span>
-        <a href={site.calendar}>Open calendar ↗</a>
+        <a href={calendarUrl}>Open calendar ↗</a>
       </div>
       {shown ? (
         <>
@@ -20,7 +19,7 @@ export default function Calendar() {
           />
           <p className="calendar-note" role="status">
             If the calendar doesn’t appear,{" "}
-            <a href={site.calendar}>view all events on Luma</a>.
+            <a href={calendarUrl}>view all events on Luma</a>.
           </p>
         </>
       ) : (
@@ -36,7 +35,7 @@ export default function Calendar() {
           <button className="button" onClick={() => setShown(true)}>
             Show live calendar <span aria-hidden="true">↗</span>
           </button>
-          <a className="text-link" href={site.calendar}>
+          <a className="text-link" href={calendarUrl}>
             Prefer Luma? Open the full calendar ↗
           </a>
           <p className="small">

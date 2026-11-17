@@ -22,8 +22,8 @@ export default function Contact() {
           Email Espresso Ventures ↗
         </a>
         <p className="small">
-          Write to <a href={`mailto:${site.email}`}>{site.email}</a>.
-          The email link opens your email app.
+          Write to <a href={`mailto:${site.email}`}>{site.email}</a>. The email
+          link opens your email app.
         </p>
       </section>
       <section className="section offers">

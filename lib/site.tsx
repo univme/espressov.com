@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { canonicalOrigin } from "./indexing";
 export const site = {
   name: "Espresso Ventures",
   email: "partners@espressov.com",
-  url: process.env.SITE_URL || "https://www.espressov.com",
+  url: canonicalOrigin,
   calendar: "https://luma.com/NaplesTechMeetup",
   instagram: "https://www.instagram.com/espressov.club/",
   linkedin: "https://www.linkedin.com/company/espresso-coaching/",
@@ -45,7 +46,7 @@ export function JsonLd({ value }: { value: unknown }) {
     <script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
-        __html: JSON.stringify(value).replace(/</g, "\\u003c"),
+        __html: JSON.stringify(value).replace(/</g, "\u003c"),
       }}
     />
   );

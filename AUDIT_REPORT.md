@@ -67,3 +67,17 @@ NOT REQUESTED for production. No live deployment, DNS modification, spend, analy
 - `python scripts/check-output.py`: PASS for all eight pages.
 - Rendered link/JSON-LD inspection: PASS for partners@espressov.com on all eight pages; no Wix, Wixstatic or Parastorage resource URLs found.
 - Inbox delivery and email-app/browser handoff remain NOT TESTED. No email sent.
+
+## Dark mode and Nertia-readiness update — 2026-11-17
+
+Scope: eight pages, shared layout/theme, photos, indexing configuration, generated llms.txt. Baseline is the user's new sample report: performance 98, accessibility 100, best practices 100, SEO 69; these are not new post-change measurements.
+
+| Domain | Evidence/method | Status | Limits |
+|---|---|---|---|
+| Security/privacy | Diff inspection: no new secrets, third-party scripts, tracking, dependencies, network writes or collected personal data; allowlisted local theme preference and canonical URL validation; correctly escaped JSON-LD | PASS (scoped source review) | Not a full penetration test; strict CSP not introduced; future CSP must allow static theme bootstrap |
+| Accessibility | Native named theme toggle with aria-pressed, 44px minimum height, focus styles, reduced-motion retained; 18 text/background pairs tested ≥4.5:1 in both themes; alt text retained | PASS (source/calculation scope) | Rendered contrast, keyboard, screen reader and full reflow NOT TESTED for this change |
+| SEO/AEO/GEO | Production build plus eight-route HTML/robots/sitemap/header checks; forced-preview guard build/check; canonical-aware identity/llms.txt; missing SITE_URL rejection | PASS (built-artifact scope) | Actual search indexing/AI citations not tested or guaranteed; sample intentionally blocked |
+| Performance | Explicit responsive Next Image sizes, eager high-priority hero/lazy supporting photos; no new dependencies; system fonts and deferred Luma retained | PASS (source/build scope) | New Lighthouse/Nertia and optimizer image-byte measurements NOT TESTED; cannot claim 100 |
+| UX/conversion | Theme bootstrap simulations: stored light/dark, system default, invalid or blocked storage; output confirms named toggle; email and calendar destinations preserved | PASS (simulation/source scope) | Browser toggle/reload, third-party Luma and email delivery NOT TESTED |
+
+Production and preview builds include successful TypeScript checks. Updated `scripts/check-output.py` validates both modes. `node scripts/check-theme.mjs` validates bootstrap cases and core contrast pairs; future live testing must cover both palettes. Source changes submitted on a review branch; no production release, new indexing policy activation, DNS or live account writes performed. All original live-integration/manual-QA release blockers remain applicable. No request for production release approval at this stage.

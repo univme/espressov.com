@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import Calendar from "@/components/Calendar";
 import { meta, site } from "@/lib/site";
@@ -40,13 +41,13 @@ export default function Community() {
           </div>
         </div>
         <div className="hero-image">
-          <img
+          <Image
             src="/images/meetup.webp"
-            srcSet="/images/meetup-small.webp 800w, /images/meetup.webp 1600w"
             sizes="(max-width: 800px) 100vw, 50vw"
             width="1600"
             height="1200"
             fetchPriority="high"
+            loading="eager"
             alt="Naples Tech guests connecting over drinks and conversation"
           />
           <div className="photo-tag">
@@ -93,7 +94,7 @@ export default function Community() {
             Follow our calendar ↗
           </a>
         </div>
-        <Calendar />
+        <Calendar calendarUrl={site.calendar} />
       </section>
       <section className="section principles">
         <div>
@@ -155,7 +156,8 @@ export default function Community() {
             Meet the people behind it ↗
           </Link>
         </div>
-        <img
+        <Image
+          sizes="(max-width: 800px) 100vw, (max-width: 1600px) 45vw, 720px"
           src="/images/banner.webp"
           width="900"
           height="1200"

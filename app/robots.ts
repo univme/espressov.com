@@ -1,7 +1,8 @@
+import { isIndexable } from "@/lib/indexing";
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
-  return process.env.INDEXABLE === "true"
+  return isIndexable
     ? {
         rules: [
           { userAgent: "*", allow: "/", disallow: ["/*?lightbox="] },
